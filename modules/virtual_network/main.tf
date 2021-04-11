@@ -4,7 +4,6 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.30.0.0/16"]
   location            = "East US"
   resource_group_name = "DEV-RG01"
-  tags                = local.terratag_added_main
 }
 
 resource "azurerm_subnet" "internal" {
@@ -18,10 +17,5 @@ resource "azurerm_subnet_network_security_group_association" "nsga1" {
   subnet_id                 = azurerm_subnet.internal.id
   network_security_group_id = var.nsg_id
   depends_on                = [azurerm_subnet.internal]
-}
-
-
-locals {
-  terratag_added_main = {"ENV"="DEV"}
 }
 

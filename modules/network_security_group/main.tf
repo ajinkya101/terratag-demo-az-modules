@@ -17,12 +17,5 @@ resource "azurerm_network_security_group" "nsg1" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-  tags = local.terratag_added_main
-}
-
-
-
-locals {
-  terratag_added_main = {"ENV"="DEV"}
 }
 
